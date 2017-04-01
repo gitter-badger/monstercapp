@@ -4,15 +4,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="favicon.ico">
     <title>Monstercapp</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+
         * {
             margin: 0;
             padding: 0;
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
             box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
         }
 
         html, body {
@@ -20,62 +23,95 @@
         }
 
         body {
-            color: #fff;
-            background: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .images-container {
+        h1, h2, h3, h4, h5 {
+            display: block;
+            font-weight: 700;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(0, 0, 0, .06);
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: 300;
+        }
+
+        .header {
+            max-width: 512px;
+            color: #000;
+            background: #fff;
+            padding: 16px;
+        }
+
+        .header > * {
+            margin-bottom: 16px;
+        }
+
+        .header > *:last-child {
+            margin: 0;
+        }
+
+        .btn {
+            display: block;
+            padding: 6px 12px;
+            font-size: 18px;
+            line-height: 1.42857143;
+            text-align: center;
+            border-radius: 4px;
+            text-decoration: none;
+            border: 1px solid #03A9F4;
+            background: #1dc0ff;
+            color: #fff;
+            font-weight: 400;
+        }
+
+        .btn-default:hover {
+            border: 1px solid #0288D1;
+        }
+
+        .images {
+            width: 100vh;
+            height: 100vh;
+        }
+
+        .images .image {
+            width: auto;
             height: 100vh;
             background: no-repeat center center;
             -webkit-transition: background-image 0.32s ease-in-out;
             transition: background-image 0.32s ease-in-out;
+            background-size: auto 100vh;
         }
-
-        .overlay {
-            /*position: absolute;*/
-            /*top: 0;*/
-            /*right: 0;*/
-            /*left: 0;*/
-            background: rgba(0, 0, 0, .64);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 64px;
-        }
-
     </style>
 </head>
 <body>
-<div class="overlay">
-    <h2>Monstercapp</h2>
+<div class="header">
+    <h1>Monstercapp</h1>
+    <p>App was developed by fans for fans of Monstercat Music Label. Main features of the app is the
+        visualizing and offline listening Monstercat's music.</p>
+    <a class="btn btn-default"
+       href="mailto:amazhitov@gmail.com">Send me an email to Get APK</a>
+    <h3>Features</h3>
 </div>
-<div class="images-container" id="images-container"></div>
+<div class="images">
+    <div class="image" id="image"></div>
+</div>
 <script>
     (function () {
-        var pngs = [
-            './img/cd.png',
-            './img/ef.png',
-            './img/kl.png',
-            './img/mn.png',
-            './img/ab.png'
-        ];
-        var i = 0;
-
         function r(i) {
-            if (i == pngs.length) {
-                i = 0;
-            }
-            console.log('i = ' + i);
-            document.getElementById('images-container').style.backgroundImage = 'url(' + pngs[i] + ')';
-            document.getElementById('images-container').style.backgroundSize = 'auto 100vh';
-            i++;
-
+            if (i === img.length) i = 0;
+            document.getElementById('image').style.backgroundImage = 'url(' + img[i] + ')';
             setTimeout(function () {
-                r(i);
-            }, 2048);
+                r(++i);
+            }, 1024);
         }
-        r(i);
+
+        var img = ['./img/cd.png', './img/ef.png', './img/kl.png', './img/mn.png', './img/ab.png'];
+        r(0);
     }());
 </script>
 </body>
