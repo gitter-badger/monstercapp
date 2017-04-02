@@ -19,16 +19,17 @@
         }
 
         html, body {
-            height: 100vh;
+            height: 100%;
         }
 
         body {
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding: 16px;
         }
 
-        h1, h2, h3, h4, h5 {
+        h1, h3 {
             display: block;
             font-weight: 700;
             padding-bottom: 8px;
@@ -44,15 +45,10 @@
             max-width: 512px;
             color: #000;
             background: #fff;
-            padding: 16px;
         }
 
         .header > * {
             margin-bottom: 16px;
-        }
-
-        .header > *:last-child {
-            margin: 0;
         }
 
         .btn {
@@ -73,18 +69,9 @@
             border: 1px solid #0288D1;
         }
 
-        .images {
-            width: 100vh;
-            height: 100vh;
-        }
-
-        .images .image {
-            width: auto;
-            height: 100vh;
-            background: no-repeat center center;
-            -webkit-transition: background-image 0.32s ease-in-out;
-            transition: background-image 0.32s ease-in-out;
-            background-size: auto 100vh;
+        .image {
+            width: 100%;
+            max-width: 512px;
         }
     </style>
 </head>
@@ -97,14 +84,12 @@
        href="mailto:amazhitov@gmail.com">Send me an email to Get APK</a>
     <h3>Features</h3>
 </div>
-<div class="images">
-    <div class="image" id="image"></div>
-</div>
+<img class="image" id="image" src="img/ab.png">
 <script>
     (function () {
         function r(i) {
             if (i === img.length) i = 0;
-            document.getElementById('image').style.backgroundImage = 'url(' + img[i] + ')';
+            document.getElementById('image').setAttribute('src', img[i]);
             setTimeout(function () {
                 r(++i);
             }, 1024);
